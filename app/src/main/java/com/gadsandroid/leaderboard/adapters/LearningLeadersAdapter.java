@@ -1,4 +1,4 @@
-package com.gadsandroid.leaderboard;
+package com.gadsandroid.leaderboard.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,19 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gadsandroid.leaderboard.api.utils.SkillLeader;
+import com.gadsandroid.leaderboard.R;
+import com.gadsandroid.leaderboard.api.utils.LearningLeader;
 
 import java.util.List;
 
-public class SkillLeadersAdapter extends RecyclerView.Adapter {
-    List<SkillLeader> mTopSkillLeaders;
-
-    public SkillLeadersAdapter(List<SkillLeader> leaders) {
-        mTopSkillLeaders = leaders;
+public class LearningLeadersAdapter extends RecyclerView.Adapter {
+    List<LearningLeader> mTopLearningLeaders;
+    public LearningLeadersAdapter(List<LearningLeader> learningLeadersDataSet) {
+        mTopLearningLeaders = learningLeadersDataSet;
     }
 
-    public void setData(List<SkillLeader> leaders){
-        mTopSkillLeaders = leaders;
+    public void setData(List<LearningLeader> mTopLearningLeadersDataset) {
+        mTopLearningLeaders = mTopLearningLeadersDataset;
     }
 
     // Provide a reference to the views for each data item
@@ -30,7 +30,6 @@ public class SkillLeadersAdapter extends RecyclerView.Adapter {
         // each data item is just a string in this case
         public TextView mTitle;
         public TextView mSubTitle;
-
         public MyViewHolder(View v) {
             super(v);
             mTitle = v.findViewById(R.id.main_title);
@@ -38,31 +37,30 @@ public class SkillLeadersAdapter extends RecyclerView.Adapter {
         }
     }
 
-
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.skill_leader_layout, parent, false);
+                .inflate(R.layout.learning_leader_layout, parent, false);
 
-        MyViewHolder vh = new MyViewHolder(v);
+        LearningLeadersAdapter.MyViewHolder vh = new LearningLeadersAdapter.MyViewHolder(v);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        SkillLeader skillLeader = mTopSkillLeaders.get(position);
-        String name = skillLeader.getName();
-        String IQ = skillLeader.getScore();
-        String country = skillLeader.getCountry();
-        String subtitle = IQ + " skill IQ, " + country;
-        ((SkillLeadersAdapter.MyViewHolder) holder).mTitle.setText(name);
-        ((SkillLeadersAdapter.MyViewHolder) holder).mSubTitle.setText(subtitle);
+        LearningLeader learningLeader = mTopLearningLeaders.get(position);
+        String name = learningLeader.getName();
+        String hours = learningLeader.getHours();
+        String country = learningLeader.getCountry();
+        String subtitle = hours + " learning hours, " + country;
+        ((MyViewHolder) holder).mTitle.setText(name);
+        ((MyViewHolder) holder).mSubTitle.setText(subtitle);
     }
 
     @Override
     public int getItemCount() {
-        return mTopSkillLeaders.size();
+        return mTopLearningLeaders.size();
     }
 }

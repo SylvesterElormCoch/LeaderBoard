@@ -1,4 +1,4 @@
-package com.gadsandroid.leaderboard.ui.main;
+package com.gadsandroid.leaderboard.ui.fragments;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gadsandroid.leaderboard.R;
-import com.gadsandroid.leaderboard.SkillLeadersAdapter;
+import com.gadsandroid.leaderboard.adapters.SkillLeadersAdapter;
 import com.gadsandroid.leaderboard.api.utils.ApiService;
 import com.gadsandroid.leaderboard.api.utils.SkillLeader;
 

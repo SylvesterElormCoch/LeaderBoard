@@ -7,19 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.gadsandroid.leaderboard.ui.main.SectionsPagerAdapter;
+import com.gadsandroid.leaderboard.adapters.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.gadsandroid.leaderboard.ui.main;
+package com.gadsandroid.leaderboard.adapters;
 
 import android.content.Context;
 
@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.gadsandroid.leaderboard.R;
+import com.gadsandroid.leaderboard.ui.fragments.LearningLeadersFragment;
+import com.gadsandroid.leaderboard.ui.fragments.SkillLeadersFragment;
 
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
