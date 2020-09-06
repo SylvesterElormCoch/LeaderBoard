@@ -11,9 +11,7 @@ import com.gadsandroid.leaderboard.R;
 
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
     private final Context mContext;
-
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
@@ -30,20 +28,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             default:
                 return super.getPageTitle(position);
         }
-
     }
 
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        switch (position) {
-            case 0:
-                return new LearningLeadersFragment();
-            case 1:
-                return new SkillLeadersFragment();
-            default:
-                return null;
+        if (position == 1) {
+            return new SkillLeadersFragment();
         }
+        return new LearningLeadersFragment();
     }
 
     @Override

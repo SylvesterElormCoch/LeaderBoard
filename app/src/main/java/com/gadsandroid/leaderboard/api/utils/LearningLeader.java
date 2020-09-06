@@ -1,4 +1,4 @@
-package com.gadsandroid.leaderboard;
+package com.gadsandroid.leaderboard.api.utils;
 
 public class LearningLeader {
     private String name;

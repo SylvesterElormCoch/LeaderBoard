@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.gadsandroid.leaderboard.api.utils.ApiService;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

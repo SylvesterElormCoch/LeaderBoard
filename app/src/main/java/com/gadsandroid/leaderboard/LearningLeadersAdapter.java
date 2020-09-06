@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gadsandroid.leaderboard.api.utils.LearningLeader;
+
 import java.util.List;
 
 public class LearningLeadersAdapter extends RecyclerView.Adapter {

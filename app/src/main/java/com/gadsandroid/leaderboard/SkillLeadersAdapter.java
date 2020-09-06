@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gadsandroid.leaderboard.api.utils.SkillLeader;
+
 import java.util.List;
 
 public class SkillLeadersAdapter extends RecyclerView.Adapter {

@@ -1,4 +1,4 @@
-package com.gadsandroid.leaderboard;
+package com.gadsandroid.leaderboard.api.utils;
 
 import java.util.List;
 
