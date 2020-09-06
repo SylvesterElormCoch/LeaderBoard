@@ -1,6 +1,7 @@
 package com.gadsandroid.leaderboard;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,7 +58,6 @@ public class FormSubmission extends AppCompatActivity {
         Log.d(TAG, "handleSubmission: ");
         if (submissionIsValid()) {
             checkSubmissionConfirmed();
-            clearTextFields();
         }
     }
 
@@ -68,8 +68,7 @@ public class FormSubmission extends AppCompatActivity {
         mGitHubView.setText("");
     }
 
-    private boolean checkSubmissionConfirmed() {
-        final boolean[] isConfirmed = {false};
+    private void checkSubmissionConfirmed() {
         AlertDialog.Builder EditDialog = new AlertDialog.Builder(this);
         // Create input Layout for Dialog and InputType
         View customLayout = getLayoutInflater().inflate(R.layout.confirmation_dialog, null);
@@ -81,22 +80,28 @@ public class FormSubmission extends AppCompatActivity {
         AlertDialog dialog = EditDialog.create();
         dialog.show();
 
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                clearTextFields();
+            }
+        });
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                clearTextFields();
             }
         });
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isConfirmed[0] = true;
                 dialog.dismiss();
                 sendForm();
+                clearTextFields();
             }
         });
-
-        return isConfirmed[0];
     }
 
     private void sendForm() {
@@ -115,7 +120,11 @@ public class FormSubmission extends AppCompatActivity {
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        displaySuccess();
+                        if (response.isSuccessful()){
+                            displaySuccess();
+                        }else{
+                            displayFailure();
+                        }
                         Log.d(TAG, "onResponse: " + response.body());
                     }
 
@@ -151,10 +160,26 @@ public class FormSubmission extends AppCompatActivity {
     }
 
     private boolean submissionIsValid() {
-        if (mFirstNameView.getText().length() == 0 || mlastNameView.getText().length() == 0
-                || mEmailView.getText().length() == 0 || mGitHubView.getText().length() == 0) {
-            return false;
+        boolean isValid = true;
+        if (mFirstNameView.getText().length() == 0) {
+            mFirstNameView.setError("Required");
+            isValid = false;
         }
-        return true;
+        if (mlastNameView.getText().length() == 0) {
+            mlastNameView.setError("Required");
+            isValid = false;
+
+        }
+        if (mEmailView.getText().length() == 0) {
+            mEmailView.setError("Required");
+            isValid = false;
+        }
+
+        if (mGitHubView.getText().length() == 0) {
+            mGitHubView.setError("Required");
+            isValid = false;
+        }
+
+        return isValid;
     }
 }

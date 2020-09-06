@@ -35,11 +35,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginHorizontal="35dp"
-                android:background="@android:color/white"
+                android:backgroundTint="@android:color/white"
                 android:text="@string/submit"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                app:cornerRadius="20dp" />
+                android:background="@drawable/image_rounded_corner"
+                />
         </LinearLayout>
 
 
