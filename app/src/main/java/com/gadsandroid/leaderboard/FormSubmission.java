@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FormSubmission extends AppCompatActivity {
 
-    private static final String BASE_URL = "https://docs.google.com/forms/u/0/d/e/"; //TODO
+    private static final String BASE_URL = "https://docs.google.com/forms/d/e/";
     private static final String TAG = FormSubmission.class.getName();
     private TextView mFirstNameView;
     private TextView mlastNameView;
